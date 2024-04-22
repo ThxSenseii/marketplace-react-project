@@ -2,8 +2,11 @@ const { DataTypes } = require('sequelize')
 const { connection } = require('../../database/index')
 
 
-const ContactInfo = connection.define('contactinfo', {
-  address: {
+const Order = connection.define('order', {
+  order_date: {
+    type: DataTypes.STRING
+  },
+  status: {
     type: DataTypes.STRING
   }
 },
@@ -12,4 +15,4 @@ const ContactInfo = connection.define('contactinfo', {
   }
 )
 
-module.exports = ContactInfo
+module.exports = Order
