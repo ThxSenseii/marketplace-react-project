@@ -5,17 +5,16 @@ const Tag = require('../api/models/tag.model.js')
 
 const initializeRelations = () => {
   try {
-    //here the relations
+   
 
-    // One to One
+   
     User.hasOne(ContactInfo)
     ContactInfo.belongsTo(User)
 
-    // One to Many
+   
     User.hasMany(Tweet)
     Tweet.belongsTo(User)
 
-    // Many to Many
 
     Tweet.belongsToMany(Tag, { through: 'tweet_tag' })
     Tag.belongsToMany(Tweet, { through: 'tweet_tag' })
