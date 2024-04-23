@@ -33,7 +33,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const [adrees,setadress]=useState()
+  /* const [adrees,setadress]=useState() */
 
 /* const handleAdrees = (e) => {
   console.log(e.target.value)
@@ -117,6 +117,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="address"
+
                   label="Address"
                   autoFocus
                   /* onChange={(e)=>{handleAdrees(e)}} */
@@ -150,8 +151,8 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                <Link href="/LogIn" variant="body2">
+                  Already have an account? Log in
                 </Link>
               </Grid>
             </Grid>
