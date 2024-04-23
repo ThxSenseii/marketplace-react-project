@@ -1,4 +1,4 @@
-const User = require('../models/user.model')
+const Users = require('../models/users.model')
 const jwt = require('jsonwebtoken')
 
 
@@ -21,17 +21,17 @@ function checkAuth(req, res, next) {
         return res.status(401).send("Token not valid");
       }
       // Si el token es válido, busca al usuario correspondiente en la base de datos
-      const user = await User.findOne({
+      const users = await Users.findOne({
         where: {
           email: payload.email, // Utiliza el email contenido en el payload del token para buscar al usuario
         },
       });
       // Si no se encuentra un usuario con ese email, retorna un error 401
-      if (!user) {
+      if (!users) {
         return res.status(401).send("Token not valid");
       }
       // Si se encuentra el usuario, lo almacena en el objeto res.locals para su uso en el siguiente middleware
-      res.locals.user = user;
+      res.locals.users = users;
       // Llama a la función next para continuar con el próximo middleware en la cadena
       next();
     }
@@ -39,7 +39,7 @@ function checkAuth(req, res, next) {
 }
 
 function checkAdmin(req, res, next) {
-  if (res.locals.user.role !== 'admin') {
+  if (res.locals.users.role !== 'admin') {
     return res.status(401).json('Admins only')
   }
   else {

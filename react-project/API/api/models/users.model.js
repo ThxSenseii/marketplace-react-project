@@ -5,7 +5,7 @@ const { DataTypes } = require('sequelize');
 const { connection } = require('../../database/index');
 
 // Definimos un modelo 'User' usando el objeto connection que se refiere a la tabla 'user' en la base de datos
-const User = connection.define('user', {
+const Users = connection.define('users', {
   // Definimos una columna 'name' para almacenar el nombre del usuario
   user_name: {
     type: DataTypes.STRING // Establece el tipo de dato como cadena de texto
@@ -31,4 +31,4 @@ const User = connection.define('user', {
   });
 
 // Exportamos el modelo 'User' para poder usarlo en otras partes de la aplicación
-module.exports = User;
+module.exports = Users;

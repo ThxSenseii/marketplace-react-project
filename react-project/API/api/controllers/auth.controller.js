@@ -1,6 +1,5 @@
 // Importamos los modelos de usuario y contacto
-const User = require('../models/user.model');
-const ContactInfo = require('../models/contactInfo.model');
+const Users = require('../models/users.model');
 
 // Importamos las librerías para manejar tokens y cifrado de contraseñas
 const jwt = require('jsonwebtoken');
@@ -10,13 +9,13 @@ const bcrypt = require('bcrypt');
 const signUp = async (req, res) => {
   try {
     //Buscamos al usuario primero para erificar que no se haya registrado antes.
-    const findUser = await User.findOne({
+    const findUsers = await Users.findOne({
       where: {
         email: req.body.email
       }
     })
     // Si existe el usuario devolvemos un mensaje con que le usuario ya existe y que así no pueda registrase si no que haga login
-    if (findUser) {
+    if (findUsers) {
       return res.json({ messae: 'User already exits' })
     }
     // Generamos una 'sal' para el cifrado de la contraseña. Esto ayuda a asegurar la contraseña aún más
@@ -25,19 +24,16 @@ const signUp = async (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, salt);
 
     // Creamos un nuevo usuario con los datos proporcionados en la solicitud
-    const user = await User.create({
+    const users = await Users.create({
       email: req.body.email,
       password: req.body.password,
-      name: req.body.name
-    });
-
-    // Creamos una nueva entrada de contacto con los datos proporcionados
-    const contact = await ContactInfo.create({
+      user_name: req.body.name,
       address: req.body.address
     });
 
+    // Creamos una nueva entrada de contacto con los datos proporcionados
     // Asociamos el contacto creado con el usuario creado utilizando la función setContact generada por Sequelize
-    await contact.setUser(user);
+    // await contact.setUsers(users);
 
     // Creamos el payload del token, incluyendo el email del usuario
     const payload = { email: req.body.email };
@@ -57,14 +53,14 @@ const signUp = async (req, res) => {
 const login = async (req, res) => {
   try {
     // Intenta encontrar un usuario en la base de datos que coincida con el email proporcionado
-    const user = await User.findOne({
+    const users = await Users.findOne({
       where: {
         email: req.body.email // El email viene del cuerpo de la petición
       }
     });
 
     // Si no se encuentra un usuario con el email proporcionado, devuelve un error 404
-    if (!user) {
+    if (!users) {
       return res.status(404).send('Email or password wrong'); // Mensaje de error indicando que el email o contraseña son incorrectos
     }
 

@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize')
 const { connection } = require('../../database/index')
 
 
-const Order = connection.define('order', {
+const Orders = connection.define('orders', {
   order_date: {
     type: DataTypes.STRING
   },
@@ -15,4 +15,4 @@ const Order = connection.define('order', {
   }
 )
 
-module.exports = Order
+module.exports = Orders

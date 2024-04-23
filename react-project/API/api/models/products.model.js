@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const { connection } = require('../../database/index')
 
-const Product = connection.define('product', {
+const Products = connection.define('products', {
   product_name: {
     type: DataTypes.STRING,
   },
@@ -17,4 +17,4 @@ const Product = connection.define('product', {
   }
 )
 
-module.exports = Product
+module.exports = Products
