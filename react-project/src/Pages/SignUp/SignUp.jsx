@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { signupp } from '/home/reboot/code/marketplace-react-project/react-project/src/services/auth.js';
-
+import {useState} from 'react';
 
 function Copyright(props) {
   return (
@@ -22,7 +22,7 @@ function Copyright(props) {
       <Link color="inherit" href="https://mui.com/">
         Your Website../Pages/SignUp/SignUp.jsx
       </Link>{' '}
-      {new Date().getFullYear()}import { SignUp } from '../services/auth'
+      {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
@@ -33,11 +33,19 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+  const [adrees,setadress]=useState()
+
+/* const handleAdrees = (e) => {
+  console.log(e.target.value)
+  setadress(e.target.value)
+} */
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     await signupp({ email: data.get('email'),
-    password: data.get('password') ,user_name: data.get('user_name'), address: data.get('address'), mobil_phone: data.get('mobil_phone')})
+    password: data.get('password') , user_name: data.get('user_name'), address: data.get('address'), mobil_phone: data.get('mobil_phone')})
   };
 
   return (
@@ -111,6 +119,7 @@ export default function SignUp() {
                   id="address"
                   label="Address"
                   autoFocus
+                  /* onChange={(e)=>{handleAdrees(e)}} */
                 />
               </Grid>
               <Grid item xs={12} sm={6}>

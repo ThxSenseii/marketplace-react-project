@@ -28,8 +28,9 @@ const signUp = async (req, res) => {
     const users = await Users.create({
       email: req.body.email,
       password: req.body.password,
-      user_name: req.body.name,
-      address: req.body.address
+      user_name: req.body.user_name,
+      address: req.body.address,
+      mobil_phone: req.body.mobil_phone
     });
 
     // Creamos una nueva entrada de contacto con los datos proporcionados
