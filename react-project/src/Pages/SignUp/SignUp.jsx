@@ -12,15 +12,17 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { signupp } from '/home/reboot/code/marketplace-react-project/react-project/src/services/auth.js';
+
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Your Website../Pages/SignUp/SignUp.jsx
       </Link>{' '}
-      {new Date().getFullYear()}
+      {new Date().getFullYear()}import { SignUp } from '../services/auth'
       {'.'}
     </Typography>
   );
@@ -31,13 +33,11 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    await signupp({ email: data.get('email'),
+    password: data.get('password') ,user_name: data.get('user_name'), address: data.get('address'), mobil_phone: data.get('mobil_phone')})
   };
 
   return (
@@ -63,15 +63,15 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="user_name"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="user_name"
+                  label="Full Name"
                   autoFocus
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+             {/*  <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
@@ -80,7 +80,7 @@ export default function SignUp() {
                   name="lastName"
                   autoComplete="family-name"
                 />
-              </Grid>
+              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -102,12 +102,34 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="given-name"
+                  name="address"
+                  required
+                  fullWidth
+                  id="address"
+                  label="Address"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="given-name"
+                  name="mobil_phone"
+                  required
+                  fullWidth
+                  id="mobil_phone"
+                  label="Mobil Phone"
+                  autoFocus
+                />
+              </Grid>
+             {/*  <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
                   label="I want to receive inspiration, marketing promotions and updates via email."
                 />
-              </Grid>
+              </Grid> */}
             </Grid>
             <Button
               type="submit"

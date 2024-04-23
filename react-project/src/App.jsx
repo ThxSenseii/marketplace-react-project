@@ -1,8 +1,8 @@
-import { useState } from 'react'
+/* import { useState } from 'react' */
 import { RouterProvider } from 'react-router-dom'
-import { router } from './Router/index'
+import  router  from './Router/index'
 import './App.css'
-import './Pages/SignUp/SignUp'
+import '/home/reboot/code/marketplace-react-project/react-project/src/Pages/SignUp/SignUp.jsx'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -15,3 +15,4 @@ function App() {
 }
 
 export default App
+/*  */

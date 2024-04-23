@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 // Definimos la función signUp, que será una función asincrónica para manejar la creación de usuarios
 const signUp = async (req, res) => {
   try {
+    console.log(req.body)
     //Buscamos al usuario primero para erificar que no se haya registrado antes.
     const findUsers = await Users.findOne({
       where: {
