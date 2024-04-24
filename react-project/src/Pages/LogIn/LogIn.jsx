@@ -33,11 +33,19 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function LogIn() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    loginn({ email: data.get('email'),
+
+    let datalogin = await loginn({ email: data.get('email'),
     password: data.get('password') })
+
+    /* console.log(datalogin.response.status) */
+    
+    if (datalogin.response.status === 404) {
+      return alert(datalogin.response.data)
+    }
+
     console.log({
         email: data.get('email'),
       password: data.get('password'),
@@ -98,9 +106,9 @@ export default function LogIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                {/* <Link href="#" variant="body2">
                   Forgot password?
-                </Link>
+                </Link> */}
               </Grid>
               <Grid item>
                 <Link href="/SignUp" variant="body2">

@@ -19,7 +19,8 @@ const signUp = async (req, res) => {
     // Si existe el usuario devolvemos un mensaje con que le usuario ya existe y que así no pueda registrase si no que haga login
     if (findUsers) {
       
-      return res.json({ messae: 'User already exits' })
+      return res.json({ message: 'User already exits' })
+     
       
     }
     // Generamos una 'sal' para el cifrado de la contraseña. Esto ayuda a asegurar la contraseña aún más
@@ -67,10 +68,11 @@ const login = async (req, res) => {
     // Si no se encuentra un usuario con el email proporcionado, devuelve un error 404
     if (!users) {
       return res.status(404).send('Email or password wrong'); // Mensaje de error indicando que el email o contraseña son incorrectos
+      
     }
 
     // Utiliza bcrypt para comparar la contraseña proporcionada con la almacenada en la base de datos
-    const checkPass = bcrypt.compareSync(req.body.password, user.password);
+    const checkPass = bcrypt.compareSync(req.body.password, users.password);
 
     // Si la contraseña es correcta
     if (checkPass) {
@@ -79,7 +81,7 @@ const login = async (req, res) => {
       // Firma un token JWT usando una clave secreta y establece un tiempo de expiración
       const token = jwt.sign(payload, 'secret', { expiresIn: '1h' });
       // Devuelve el token generado con un estado 200, indicando éxito en el inicio de sesión
-      return res.status(200).json({ token }); // El objeto json contiene el token generado
+      return res.status(200).json({ token: token }); // El objeto json contiene el token generado
     } else {
       // Si la contraseña no es correcta, devuelve un error 404
       return res.status(404).send('Email or password wrong'); // Mensaje de error similar al anterior

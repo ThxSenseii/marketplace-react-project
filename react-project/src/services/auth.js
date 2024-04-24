@@ -23,6 +23,7 @@ const loginn = async (body) => {
     return data
   } catch (error) {
     console.log(error)
+    return error
   }
 }
 

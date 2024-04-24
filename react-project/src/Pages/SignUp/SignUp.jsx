@@ -44,9 +44,23 @@ export default function SignUp() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    await signupp({ email: data.get('email'),
+
+    let datasignup = await signupp({ email: data.get('email'),
     password: data.get('password') , user_name: data.get('user_name'), address: data.get('address'), mobil_phone: data.get('mobil_phone')})
+
+    if (datasignup.message){
+      alert(datasignup.message);
+    }
+    
+
+    return datasignup;
+    
   };
+
+
+  
+
+
 
   return (
     <ThemeProvider theme={defaultTheme}>
