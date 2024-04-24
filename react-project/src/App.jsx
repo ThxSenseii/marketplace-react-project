@@ -2,8 +2,8 @@
 import { RouterProvider } from 'react-router-dom'
 import  router  from './Router/index'
 import './App.css'
-import '/home/reboot/code/marketplace-react-project/react-project/src/Pages/SignUp/SignUp.jsx'
-import '/home/reboot/code/marketplace-react-project/react-project/src/Pages/LogIn/LogIn.jsx'
+// import '../src/Pages/LogIn/LogIn'
+// import '../src/Pages/SignUp/SignUp'
 
 function App() {
   // const [count, setCount] = useState(0)
