@@ -51,6 +51,7 @@ export default function SignUp() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
+      {/* <h1>WELCOME TO BIKES</h1> */}
         <CssBaseline />
         <Box
           sx={{
