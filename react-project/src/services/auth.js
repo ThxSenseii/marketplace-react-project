@@ -20,6 +20,7 @@ const loginn = async (body) => {
 
     console.log(body)
     const { data } = await api.post('/auth/LogIn', body)
+    console.log(data)
     return data
   } catch (error) {
     console.log(error)

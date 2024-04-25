@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -33,12 +35,16 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function LogIn() {
+  const [loggedIn, setLoggedIn] = useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
     let datalogin = await loginn({ email: data.get('email'),
     password: data.get('password') })
+    console.log(datalogin);
+    localStorage.setItem("token", datalogin.token)
+    localStorage.setItem("useremail", datalogin.email)
 
     /* console.log(datalogin.response.status) */
     
@@ -50,11 +56,15 @@ export default function LogIn() {
         email: data.get('email'),
       password: data.get('password'),
     });
+
+    setLoggedIn(true);
+    console.log(setLoggedIn)
   };
   
 
   return (
     <ThemeProvider theme={defaultTheme}>
+       {loggedIn ? <Navigate to="../User" /> : null}
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

@@ -1,6 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import './Nav.css'
+const logOut = () => {
+  if (localStorage.token === null || localStorage.token === undefined){
+    alert("No has iniciado sesión aún")
+  } else {
+    alert("Has finalizado la sesión")
+    localStorage.removeItem('token');
+    localStorage.removeItem('useremail');
+  }
+}
 
 const Nav = () => {
   return (
@@ -17,7 +26,10 @@ const Nav = () => {
             <Link to="/login">Log In</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/logout">Log Out</Link>
+              <Link to="/LogIn" onClick={logOut}>Log Out</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/User">User</Link>
           </MenuItem>
           <MenuItem>
             <Link to="/productos">Productos</Link>

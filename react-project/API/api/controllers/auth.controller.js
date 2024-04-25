@@ -47,7 +47,7 @@ const signUp = async (req, res) => {
     const token = jwt.sign(payload, 'secret', { expiresIn: '1h' });
     console.log(token)
     // Si todo es correcto, devolvemos el token al usuario con un estado 200 (OK)
-    return res.status(200).json({ token });  // ===> { token: token }
+    return res.status(200).json({ token: token, email: users.email });  // ===> { token: token }
   } catch (error) {
     // Si hay un error, lo registramos y devolvemos un error 500 (Error interno del servidor)
     console.log('Error signing up user');
@@ -81,7 +81,7 @@ const login = async (req, res) => {
       // Firma un token JWT usando una clave secreta y establece un tiempo de expiración
       const token = jwt.sign(payload, 'secret', { expiresIn: '1h' });
       // Devuelve el token generado con un estado 200, indicando éxito en el inicio de sesión
-      return res.status(200).json({ token: token }); // El objeto json contiene el token generado
+      return res.status(200).json({ token: token, email: users.email }); // El objeto json contiene el token generado
     } else {
       // Si la contraseña no es correcta, devuelve un error 404
       return res.status(404).send('Email or password wrong'); // Mensaje de error similar al anterior

@@ -48,7 +48,8 @@ export default function SignUp() {
 
     let datasignup = await signupp({ email: data.get('email'),
     password: data.get('password') , user_name: data.get('user_name'), address: data.get('address'), mobil_phone: data.get('mobil_phone')})
-
+    localStorage.setItem("token", datasignup.token)
+    localStorage.setItem("useremail", datasignup.email)
     if (datasignup.message){
       alert(datasignup.message);
     }
