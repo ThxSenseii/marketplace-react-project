@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { signupp } from '../../services/auth';
 import {useState} from 'react';
+import './SignUp.css'
 
 function Copyright(props) {
   return (
