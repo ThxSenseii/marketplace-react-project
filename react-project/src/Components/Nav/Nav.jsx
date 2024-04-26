@@ -1,5 +1,13 @@
 import { Link } from 'react-router-dom';
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
+import { Sidebar, Menu, MenuItem} from 'react-pro-sidebar';
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
+import PedalBikeRoundedIcon from '@mui/icons-material/PedalBikeRounded';
+import Divider from '@mui/material/Divider';
+import FileUploadRoundedIcon from '@mui/icons-material/FileUploadRounded';
 import './Nav.css'
 const logOut = () => {
   if (localStorage.token === null || localStorage.token === undefined){
@@ -13,29 +21,28 @@ const logOut = () => {
 
 const Nav = () => {
   return (
-    <div style={{ display: 'flex', height: '100vh' }}>
-      <Sidebar className="app">
+    <div style={{ display: 'flex', height: '100vh'}}>
+      <Sidebar classname="app">
         <Menu>
-          <MenuItem className="menu1">
-            <h2>QUICKPAY</h2>
+          <MenuItem className="menu1" icon={<MenuRoundedIcon/>}>
+            <h2>Menu</h2>
           </MenuItem>
-          <MenuItem>
-            <Link to="/signup">Sign Up</Link>
+          <MenuItem icon={<FileUploadRoundedIcon />}>
+            <Link to="/signup" >Sign Up</Link>
           </MenuItem>
-          <MenuItem>
-            <Link to="/login">Log In</Link>
+          <MenuItem icon={<LoginRoundedIcon />}>
+            <Link to="/login" >Log In</Link>
           </MenuItem>
-          <MenuItem>
-              <Link to="/LogIn" onClick={logOut}>Log Out</Link>
+          <Divider />
+          <MenuItem icon={<PedalBikeRoundedIcon />}>
+            <Link to="/productos" >Productos</Link>
           </MenuItem>
-          <MenuItem>
-            <Link to="/User">User</Link>
+          <MenuItem icon={<ShoppingCartRoundedIcon />}>
+            <Link to="/carrito" >Carrito</Link>
           </MenuItem>
-          <MenuItem>
-            <Link to="/productos">Productos</Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/carrito">Carrito</Link>
+          <Divider/>
+          <MenuItem icon={<LogoutRoundedIcon />}>
+            <Link to="/LogIn" onClick={logOut} >Log Out</Link>
           </MenuItem>
         </Menu>
       </Sidebar>

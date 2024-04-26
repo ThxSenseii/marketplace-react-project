@@ -10,6 +10,9 @@ const Products = connection.define('products', {
   },
   stock: {
     type: DataTypes.INTEGER
+  },
+  image: {
+    type: DataTypes.STRING
   }
 },
   {
