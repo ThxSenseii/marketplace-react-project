@@ -1,13 +1,12 @@
 
 import React from 'react';
-import ProductImages from '../../Components/ProductsImages/ProductsImages';
+import './Home.css';
 
 const Home = () => {
   return (
-    <div>
-      <h1>Bienvenido a nuestra tienda en línea</h1>
-      <p>Explora nuestra amplia selección de productos y encuentra lo que necesitas.</p>
-      <ProductImages />
+    <div className="home-container">
+        <h1>Bienvenido a nuestra tienda en línea</h1>
+       <p>Explora nuestra amplia selección de productos y encuentra lo que necesitas.</p>
     </div>
   );
 };

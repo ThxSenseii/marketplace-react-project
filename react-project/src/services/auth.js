@@ -5,7 +5,7 @@ const signupp = async (body) => {
 
     console.log(body)
     const { data } = await api.post('/auth/SignUp', body)
-    return data
+    return { userData: data, userId: data.id };
   } catch (error) {
     console.log(error)
   }
@@ -21,15 +21,30 @@ const loginn = async (body) => {
     console.log(body)
     const { data } = await api.post('/auth/LogIn', body)
     console.log(data)
-    return data
+    return { userData: data, userId: data.id };
   } catch (error) {
     console.log(error)
-    return error
+    return { userData: null, userId: null };
   }
 }
 
 export {
   loginn
 }
+
+const getUserData = async (userId) => {
+  try {
+    const { data } = await api.get(`/users/${userId}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+export {
+  getUserData
+}
+
 
 

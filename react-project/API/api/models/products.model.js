@@ -12,7 +12,7 @@ const Products = connection.define('products', {
     type: DataTypes.INTEGER
   },
   image: {
-    type:DataTypes.STRING
+    type: DataTypes.STRING
   }
 },
   {
