@@ -12,9 +12,6 @@ const initializeRelations = () => {
     OrderItems.hasMany(Orders)
     Orders.belongsTo(OrderItems)
 
-    // OrderItems.belongsToMany(Products)
-    // Products.belongsToMany(OrderItems)
-
     
     Products.belongsToMany(OrderItems, { through: 'Products_OrderItems' })
     OrderItems.belongsToMany(Products, { through: 'Products_OrderItems' })

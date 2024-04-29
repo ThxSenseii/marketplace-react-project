@@ -5,6 +5,7 @@ import Home from '../Pages/Home/Home.jsx'
 import SignUp from '../Pages/SignUp/SignUp.jsx'
 import LogIn from '../Pages/LogIn/LogIn.jsx'
 import User from '../Pages/User/User'
+import Products from '../Pages/Products/Products.jsx'
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
         {
           path:'/LogIn',
           element: <LogIn />,
+        },
+        {
+          path:'Products',
+          element: <Products/>
         },
         {
           path:'/User',
