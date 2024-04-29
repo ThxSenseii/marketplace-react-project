@@ -20,8 +20,8 @@ const Productos = () => {
 
   return (
     <div>
-      <h1>Todas nuestras bicicletas</h1>
-      <div className="images-container">
+     <h1>Todas nuestras bicicletas</h1>
+      <div className="productos-container">
         {productos.map((producto, index) => (
           <img key={index} src={producto.image} alt={`Image ${index}`} className="image" />
         ))}
