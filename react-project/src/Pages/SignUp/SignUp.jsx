@@ -43,6 +43,9 @@ export default function SignUp() {
     } else {
       alert('Registration successful')
     }
+    else{
+      alert('Registration successful')
+    }
     
 
     return datasignup;

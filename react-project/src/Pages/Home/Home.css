@@ -5,4 +5,8 @@
     width: 80%; 
     margin: 0 auto; 
 }
+.image {
+    width: 100%;
+    height: auto;
+  }
   

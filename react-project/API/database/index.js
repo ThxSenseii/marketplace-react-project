@@ -17,6 +17,7 @@ const checkDb = async () => {
   }
 }
 
+
 const syncModels = async () => {
   try {
     await connection.sync()
@@ -29,5 +30,5 @@ const syncModels = async () => {
 module.exports = {
   checkDb,
   connection,
-  syncModels
+  syncModels,
 }

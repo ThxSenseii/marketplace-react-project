@@ -1,4 +1,7 @@
 import api from './config.js'
+import React, { useState, useEffect } from 'react';
+
+
 
 const signupp = async (body) => {
   try {
@@ -32,19 +35,19 @@ export {
   loginn
 }
 
-const getUserData = async (userId) => {
+const ImgIni = async (id) => {
   try {
-    const { data } = await api.get(`/users/${userId}`);
-    return data;
+
+    console.log(id)
+    const { data } = await api.get(`/products/initialImage/${id}`)
+    return data
   } catch (error) {
-    console.log(error);
-    return null;
+    console.log(error)
+    return error
   }
 }
 
 export {
-  getUserData
+  ImgIni
 }
-
-
 
