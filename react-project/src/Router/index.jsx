@@ -4,8 +4,8 @@ import Root from '../Layout/Root/index.jsx'
 import Home from '../Pages/Home/Home.jsx'
 import SignUp from '../Pages/SignUp/SignUp.jsx'
 import LogIn from '../Pages/LogIn/LogIn.jsx'
-import User from '../Pages/User/User'
-import Products from '../Pages/Products/Products.jsx'
+import Home from '../Pages/Home/Home.jsx'
+import Productos from '../Pages/Productos/Productos.jsx'
 
 
 const router = createBrowserRouter([
@@ -24,23 +24,13 @@ const router = createBrowserRouter([
         },
         {
           path:'/LogIn',
-          element: <LogIn />,
-        },
-        {
-          path:'Products',
-          element: <Products/>
-        },
-        {
-          path:'/User',
-          element: <User />,
-          loader: () => {
-            if(!localStorage.getItem("token")) {
-              return redirect("/LogIn");
-            } else {
-              return null;
-            }
-          }
-        }
+          element: <LogIn />
+
+      },
+      {
+        path: '/Productos',
+         element: <Productos />
+       }
       ]
     }
   ]);

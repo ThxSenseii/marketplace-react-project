@@ -51,3 +51,19 @@ export {
   ImgIni
 }
 
+const ImgAll = async (body) => {
+  try {
+
+
+    const { data } = await api.get(`/productos/allImages`, body)
+    return data
+  } catch (error) {
+    console.log(error)
+    return error
+  }
+}
+
+export {
+  ImgAll
+}
+
