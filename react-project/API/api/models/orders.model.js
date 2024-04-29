@@ -2,8 +2,11 @@ const { DataTypes } = require('sequelize')
 const { connection } = require('../../database/index')
 
 
-const Tweet = connection.define('tweet', {
-  comment: {
+const Orders = connection.define('orders', {
+  order_date: {
+    type: DataTypes.STRING
+  },
+  status: {
     type: DataTypes.STRING
   }
 },
@@ -12,4 +15,4 @@ const Tweet = connection.define('tweet', {
   }
 )
 
-module.exports = Tweet
+module.exports = Orders

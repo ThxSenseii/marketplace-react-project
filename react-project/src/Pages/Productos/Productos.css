@@ -1,0 +1,12 @@
+.productos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  
+  .image {
+    width: 100%;
+    height: auto;
+  }
+
+  

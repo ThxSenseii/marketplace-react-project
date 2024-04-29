@@ -9,6 +9,8 @@ const {
 } = require('./database/index.js')
 const initializeRelations = require('./database/relations.js')
 
+
+
 async function checkAndSyncMySQL() {
   try {
     await checkDb()

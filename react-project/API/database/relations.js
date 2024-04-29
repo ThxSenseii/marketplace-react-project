@@ -1,23 +1,23 @@
-const User = require('../api/models/user.model.js')
-const Tweet = require('../api/models/tweet.model.js')
-const ContactInfo = require('../api/models/contactInfo.model.js')
-const Tag = require('../api/models/tag.model.js')
+const Users = require('../api/models/users.model.js')
+const Orders = require('../api/models/orders.model.js')
+const OrderItems = require('../api/models/orderitems.model.js')
+const Products = require('../api/models/products.model.js')
 
 const initializeRelations = () => {
   try {
    
+    Users.hasMany(Orders)
+    Orders.belongsTo(Users)
+    
+    OrderItems.hasMany(Orders)
+    Orders.belongsTo(OrderItems)
 
-   
-    User.hasOne(ContactInfo)
-    ContactInfo.belongsTo(User)
+    // OrderItems.belongsToMany(Products)
+    // Products.belongsToMany(OrderItems)
 
-   
-    User.hasMany(Tweet)
-    Tweet.belongsTo(User)
-
-
-    Tweet.belongsToMany(Tag, { through: 'tweet_tag' })
-    Tag.belongsToMany(Tweet, { through: 'tweet_tag' })
+    
+    Products.belongsToMany(OrderItems, { through: 'Products_OrderItems' })
+    OrderItems.belongsToMany(Products, { through: 'Products_OrderItems' })
     console.log('Relations added to models')
   } catch (error) {
     console.log(error)

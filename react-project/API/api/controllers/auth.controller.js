@@ -1,6 +1,5 @@
 // Importamos los modelos de usuario y contacto
-const User = require('../models/user.model');
-const ContactInfo = require('../models/contactInfo.model');
+const Users = require('../models/users.model');
 
 // Importamos las librerías para manejar tokens y cifrado de contraseñas
 const jwt = require('jsonwebtoken');
@@ -9,15 +8,20 @@ const bcrypt = require('bcrypt');
 // Definimos la función signUp, que será una función asincrónica para manejar la creación de usuarios
 const signUp = async (req, res) => {
   try {
+    console.log(req.body)
     //Buscamos al usuario primero para erificar que no se haya registrado antes.
-    const findUser = await User.findOne({
+    const findUsers = await Users.findOne({
       where: {
         email: req.body.email
+        /* user_name: req.body.user_name */
       }
     })
     // Si existe el usuario devolvemos un mensaje con que le usuario ya existe y que así no pueda registrase si no que haga login
-    if (findUser) {
-      return res.json({ messae: 'User already exits' })
+    if (findUsers) {
+      
+      return res.json({ message: 'User already exits' })
+     
+      
     }
     // Generamos una 'sal' para el cifrado de la contraseña. Esto ayuda a asegurar la contraseña aún más
     const salt = bcrypt.genSaltSync(parseInt('10'));
@@ -25,19 +29,17 @@ const signUp = async (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, salt);
 
     // Creamos un nuevo usuario con los datos proporcionados en la solicitud
-    const user = await User.create({
+    const users = await Users.create({
       email: req.body.email,
       password: req.body.password,
-      name: req.body.name
+      user_name: req.body.user_name,
+      address: req.body.address,
+      mobil_phone: req.body.mobil_phone
     });
 
     // Creamos una nueva entrada de contacto con los datos proporcionados
-    const contact = await ContactInfo.create({
-      address: req.body.address
-    });
-
     // Asociamos el contacto creado con el usuario creado utilizando la función setContact generada por Sequelize
-    await contact.setUser(user);
+    // await contact.setUsers(users);
 
     // Creamos el payload del token, incluyendo el email del usuario
     const payload = { email: req.body.email };
@@ -57,19 +59,20 @@ const signUp = async (req, res) => {
 const login = async (req, res) => {
   try {
     // Intenta encontrar un usuario en la base de datos que coincida con el email proporcionado
-    const user = await User.findOne({
+    const users = await Users.findOne({
       where: {
         email: req.body.email // El email viene del cuerpo de la petición
       }
     });
 
     // Si no se encuentra un usuario con el email proporcionado, devuelve un error 404
-    if (!user) {
+    if (!users) {
       return res.status(404).send('Email or password wrong'); // Mensaje de error indicando que el email o contraseña son incorrectos
+      
     }
 
     // Utiliza bcrypt para comparar la contraseña proporcionada con la almacenada en la base de datos
-    const checkPass = bcrypt.compareSync(req.body.password, user.password);
+    const checkPass = bcrypt.compareSync(req.body.password, users.password);
 
     // Si la contraseña es correcta
     if (checkPass) {
@@ -78,7 +81,7 @@ const login = async (req, res) => {
       // Firma un token JWT usando una clave secreta y establece un tiempo de expiración
       const token = jwt.sign(payload, 'secret', { expiresIn: '1h' });
       // Devuelve el token generado con un estado 200, indicando éxito en el inicio de sesión
-      return res.status(200).json({ token }); // El objeto json contiene el token generado
+      return res.status(200).json({ token: token }); // El objeto json contiene el token generado
     } else {
       // Si la contraseña no es correcta, devuelve un error 404
       return res.status(404).send('Email or password wrong'); // Mensaje de error similar al anterior
