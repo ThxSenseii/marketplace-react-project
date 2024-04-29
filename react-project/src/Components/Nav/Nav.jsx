@@ -16,6 +16,10 @@ const logOut = () => {
     alert("Has finalizado la sesión")
     localStorage.removeItem('token');
     localStorage.removeItem('useremail');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('mobil_phone');
+    localStorage.removeItem('address');
+    localStorage.removeItem('userid');
   }
 }
 

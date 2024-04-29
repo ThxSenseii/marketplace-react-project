@@ -1,56 +1,43 @@
-import { useState } from 'react';
-import { signupp, loginn, getUserData } from '../../services/auth';
+
+
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import './User.css';
 
 function User() {
-  const [userId, setUserId] = useState(null);
   const [userData, setUserData] = useState(null);
 
-  const handleSignup = async (formData) => {
-    try {
-      const { userData, userId } = await signupp(formData);
-      setUserId(userId);
-      setUserData(userData);
-    } catch (error) {
-      console.error('Error signing up:', error);
-    }
-  };
+  useEffect(() => {
+    // Obtener los datos del usuario del localStorage
+    const user = {
+      userName: localStorage.getItem('user_name'),
+      email: localStorage.getItem('useremail'),
+      address: localStorage.getItem('address'),
+      mobilPhone: localStorage.getItem('mobil_phone')
+    };
 
-  const handleLogin = async (formData) => {
-    try {
-      const { userData, userId } = await loginn(formData);
-      setUserId(userId);
-      setUserData(userData);
-    } catch (error) {
-      console.error('Error logging in:', error);
-    }
-  };
-
-  const handleUser = async () => {
-    try {
-      if (!userId) {
-        console.error('No user ID available');
-        return;
-      }
-      const userData = await getUserData(userId);
-      setUserData(userData);
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
-  };
+    // Actualizar el estado con los datos del usuario
+    setUserData(user);
+  }, []);
 
   return (
-    <div>
-      <button onClick={() => handleSignup(formData)}>Sign Up</button>
-      <button onClick={() => handleLogin(formData)}>Log In</button>
-      <button onClick={handleUser}>Get User Data</button>
+    <div className="user-container overlay">
+    <Container maxWidth="sm">
+       
+      <Typography variant="h4" gutterBottom>
+        Información del usuario
+      </Typography>
       {userData && (
         <div>
-          <p>User Name: {userData.user_name}</p>
-          <p>Email: {userData.email}</p>
-          <p>Address: {userData.address}</p>
-          <p>Mobile Phone: {userData.mobile_phone}</p>
+          <Typography variant="h6">Nombre Completo: {userData.userName}</Typography>
+          <Typography variant="body1">Email: {userData.email}</Typography>
+          <Typography variant="body1">Dirección: {userData.address}</Typography>
+          <Typography variant="body1">Teléfono de contacto: {userData.mobilPhone}</Typography>
         </div>
       )}
+    </Container>
     </div>
   );
 }

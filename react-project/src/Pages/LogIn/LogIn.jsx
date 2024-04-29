@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { loginn } from '../../services/auth';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -33,6 +33,7 @@ const defaultTheme = createTheme();
 
 export default function LogIn() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -43,21 +44,31 @@ export default function LogIn() {
       password: data.get('password') 
     });
 
-    console.log(datalogin);
-    localStorage.setItem("token", datalogin.token);
-    localStorage.setItem("useremail", datalogin.email);
-    localStorage.setItem("userid", datalogin.id);
+    console.log("Data from login service:", datalogin);
 
-    if (datalogin.response.status === 404) {
+    if (datalogin.response && datalogin.response.status === 404) {
       return alert(datalogin.response.data);
     }
+
+    localStorage.setItem("token", datalogin.userData.token);
+    localStorage.setItem("useremail", datalogin.userData.email);
+    localStorage.setItem("userid", datalogin.userId);
+    localStorage.setItem("address", datalogin.userData.address);
+    localStorage.setItem("mobil_phone", datalogin.userData.phone);
+    localStorage.setItem("user_name", datalogin.userData.name);
 
     setLoggedIn(true);
   };
 
+  // Redirigir al usuario a la página "user" después de iniciar sesión
+  React.useEffect(() => {
+    if (loggedIn) {
+      navigate('/User');
+    }
+  }, [loggedIn, navigate]);
+
   return (
-    <ThemeProvider theme={defaultTheme}>
-      {loggedIn ? <Navigate to="../User" /> : null}
+    <ThemeProvider theme={createTheme()}>
       <Container component="main" maxWidth="xs" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh', marginLeft: 'auto', marginRight: 'auto' }}>
         <CssBaseline />
         <Box
@@ -113,9 +124,6 @@ export default function LogIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                {/* <Link href="#" variant="body2">
-                  Forgot password?
-                </Link> */}
               </Grid>
               <Grid item>
                 <Link href="/SignUp" variant="body2">
@@ -125,8 +133,10 @@ export default function LogIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );
 }
+
+export default LogIn;
+

@@ -5,12 +5,13 @@ import React, { useState, useEffect } from 'react';
 
 const signupp = async (body) => {
   try {
-
     console.log(body)
     const { data } = await api.post('/auth/SignUp', body)
-    return { userData: data, userId: data.id };
+    console.log(data);
+    return { userData: data, userId: data.userId };
   } catch (error) {
     console.log(error)
+    return { userData: null, userId: null };
   }
 }
 
@@ -18,7 +19,7 @@ export {
   signupp
 }
 
-const loginn = async (body) => {
+/* const loginn = async (body) => {
   try {
 
     console.log(body)
@@ -33,7 +34,50 @@ const loginn = async (body) => {
 
 export {
   loginn
-}
+} */
+
+/* const loginn = async (body) => {
+  try {
+    console.log(body);
+    const { data } = await api.post('/auth/LogIn', body);
+    console.log(data);
+    return { userData: data, userId: data.userId }; // Modificamos para obtener el ID del usuario desde la respuesta
+  } catch (error) {
+    console.log(error);
+    return { userData: null, userId: null };
+  }
+};
+
+export { loginn }; */
+
+const loginn = async (body) => {
+  try {
+    console.log(body);
+    const { data } = await api.post('/auth/LogIn', body);
+    console.log(data);
+    return { 
+      userData: data,
+      userId: data.userId,
+      address: data.address,
+      userName: data.name,
+      mobilePhone: data.phone,
+    }; 
+  } catch (error) {
+    console.log(error);
+    return { 
+      userData: null,
+      userId: null,
+      address: null,
+      userName: null,
+      mobilePhone: null
+    };
+  }
+};
+
+export { loginn };
+
+
+
 
 const ImgIni = async (id) => {
   try {
