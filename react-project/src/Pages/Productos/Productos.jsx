@@ -23,7 +23,7 @@ const Productos = () => {
   useEffect(() => {
     getProductos();
   }, []);
-
+th.floor(Math.random
   const addToCart = (producto) => {
     setCart([...cart, producto]);
   }

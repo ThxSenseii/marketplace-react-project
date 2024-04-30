@@ -42,6 +42,12 @@
 
 .product-item button {
   margin-top: auto; /* Align button to bottom */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px; /* Add smooth border */
 }
 
 
