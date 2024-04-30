@@ -1,4 +1,3 @@
-import React from 'react';
 import './Home.css';
 import RandomProductImages from '../../Components/ProductsImages/RandomProductsImages';
 import React, { useEffect, useState } from 'react';
