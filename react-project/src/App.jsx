@@ -4,6 +4,7 @@ import './App.css'
 import './Pages/SignUp/SignUp.jsx'
 import './Pages/LogIn/LogIn.jsx'
 import './Pages/Productos/Productos.jsx'
+import './Pages/Shop/Shop.jsx'
 
 function App() {
 

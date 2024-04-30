@@ -1,8 +1,8 @@
 import React from 'react'
-import './ProducList.css'
-import { useSearch } from '../components/SearchBar/SearchContext.jsx'
+import './ProductList.css'
+/* import { useSearch } from '../components/SearchBar/SearchContext.jsx'
 
-import ProductCard from '../components/ProductCard/ProductCard.jsx'
+import ProductCard from '../components/ProductCard/ProductCard.jsx' */
 
 
 function ProductList({ productsList, onAddToCart }) {

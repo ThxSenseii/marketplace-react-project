@@ -1,7 +1,10 @@
-import React from 'react'
-import './Cart.css'
+import React from 'react';
+import './Cart.css';
 
-function Cart({ totalItems, totalPrice, onClearCart }) {
+function Cart({ cart, onClearCart }) {
+  const totalItems = cart.length;
+  const totalPrice = cart.reduce((total, producto) => total + producto.price, 0);
+
   const handleClearCart = () => {
     onClearCart();
   };
@@ -9,13 +12,13 @@ function Cart({ totalItems, totalPrice, onClearCart }) {
   return (
     <div className="cart-container">
       <div className="cart">
-        <h2>Cart</h2>
-          <p>Total Items: {totalItems}</p>
-          <p>Total Price: ${totalPrice.toFixed(2)}</p>
-          <button onClick={handleClearCart}>Clear Cart</button>
+        <h2>Carrito</h2>
+        <p>Productos Totales: {totalItems}</p>
+        <p>Precio Total: {totalPrice.toFixed(2)}€</p>
+        <button onClick={handleClearCart}>Vaciar Carrito</button>
       </div>
-    </div >
-    );
+    </div>
+  );
 }
 
 export default Cart;

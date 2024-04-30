@@ -6,7 +6,7 @@ import SignUp from '../Pages/SignUp/SignUp.jsx'
 import LogIn from '../Pages/LogIn/LogIn.jsx'
 import Productos from '../Pages/Productos/Productos.jsx'
 import User from '../Pages/User/User.jsx'
-
+import Shop from '../Pages/Shop/Shop.jsx'
 
 const router = createBrowserRouter([
     {
@@ -33,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/Productos',
          element: <Productos />
+       },
+       {
+        path: '/Shop',
+        element: <Shop />
        }
       ]
     }
