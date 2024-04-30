@@ -37,3 +37,16 @@ button {
 button:hover {
   background-color: #45a049;
 }
+.product-actions {
+  text-align: center;
+}
+.product-actions button {
+  display: inline-block; /* Alinea los botones en la parte superior */
+  margin: 0 5px; /* Ajusta el margen horizontal según sea necesario */
+}
+h1 {
+  display: inline-block;
+  background-color: white;
+  border-radius: 4px;
+  padding: 5px 10px; /* Ajusta el relleno según sea necesario */
+}
