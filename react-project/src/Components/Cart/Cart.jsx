@@ -14,7 +14,7 @@ function Cart({ cart, onClearCart }) {
       <div className="cart">
         <h2>Carrito</h2>
         <p>Productos Totales: {totalItems}</p>
-        <p>Precio Total: {totalPrice.toFixed(2)}€</p>
+        <p>Precio Total: {totalPrice.toFixed(2)} €</p>
         <button onClick={handleClearCart}>Vaciar Carrito</button>
       </div>
     </div>
