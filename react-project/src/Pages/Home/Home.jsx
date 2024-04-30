@@ -41,12 +41,12 @@ const [numran, setNumran] = useState(null);
 
 
 const getNumran = () => {
-  const numran1 = Math.floor(Math.random()*3) + 1
+  const numran1 = Math.floor(Math.random()*10) + 1
   if (numran === null) {setNumran(numran1)}
 }
 console.log(numran)
 const getProduct = async () => {
-  const product = await ImgIni(numran)
+  const product = await ImgIni()
   setProduct(product)
 }
 
