@@ -3,8 +3,15 @@ import './Shop.css';
 import { useCart } from '../../Components/Cart/CartContext.jsx';
 
 const Shop = () => {
+
+  
+
   const { cart, clearCart, removeFromCart } = useCart();
   const totalPrice = cart.reduce((total, product) => total + product.price, 0);
+
+  const enviarDatos = () => {
+    console.log(totalPrice)
+  }
 
   return (
     <div className="shop-container">
@@ -32,6 +39,7 @@ const Shop = () => {
           <div className='total-info'><p>Total Items: {cart.length}</p></div>
           <div className='total-info'><p>Total: {totalPrice} €</p></div>
           <button onClick={clearCart}>Vaciar Carrito</button>
+          <button onClick={enviarDatos}>Enviar Carrito</button> 
         </div>
       )}
     </div>

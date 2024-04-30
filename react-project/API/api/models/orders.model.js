@@ -8,11 +8,11 @@ const Orders = connection.define('orders', {
   },
   status: {
     type: DataTypes.STRING
+  },
+  userId: {
+    type: DataTypes.INTEGER
   }
-},
-  {
-    timestamps: false
-  }
+}
 )
 
 module.exports = Orders
