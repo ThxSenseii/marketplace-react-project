@@ -22,8 +22,10 @@ export const CartProvider = ({ children }) => {
     setCart([]);
   };
 
-  const removeFromCart = (productToRemove) => {
-    setCart(cart.filter(product => product.id !== productToRemove.id));
+  const removeFromCart = (index) => { // Modifica removeFromCart para que reciba el índice
+    const newCart = [...cart];
+    newCart.splice(index, 1);
+    setCart(newCart);
   };
 
   return (
@@ -33,7 +35,6 @@ export const CartProvider = ({ children }) => {
   );
 };
 
-export const useCart = () => useContext(CartContext); // Define useCart
+export const useCart = () => useContext(CartContext);
 
 export default CartContext;
-
