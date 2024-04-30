@@ -1,93 +1,34 @@
-/* import './Shop.css'
-import products from '..//assets/products.json'
-import ProductList from '../../Components/ProductList/ProductList'
-import Cart from '../../src/components/Cart/Cart'
-import { useState } from 'react'
-import { SearchProvider } from '../components/SearchBar/SearchContext'
-import SearchBar from '../components/SearchBar/SearchBar'
-function Shop() {
-    
-    const [cartItems, setCartItems] = useState([]);
-  
-    
-    const addToCart = (product) => {
-      setCartItems([...cartItems, product]);
-    };
-  
-    
-    const clearCart = () => {
-      setCartItems([]);
-    };
-  
-    
-    const totalItems = cartItems.length;
-    const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
-
-    console.log('Fetched Products:', products);
-  
-    return (
-      <>
-        <h1>Titulo</h1>
-        <SearchProvider>
-      <div className="app">
-      <SearchBar />
-        <ProductList productsList={products} onAddToCart={addToCart} />
-        <Cart totalItems={totalItems} totalPrice={totalPrice} onClearCart={clearCart} />
-        </div>
-    </SearchProvider>
-      
-      </>
-    );
-  }
-export default Shop */
-
-/* import React, { useState } from 'react';
-import './Shop.css'; */
-/* import products from '../assets/products.json'; */
-/* import ProductList from '../../Components/ProductList/ProductList.jsx';
-import Cart from '../../Components/Cart/Cart.jsx'; */
-/* import { SearchProvider } from '../components/SearchBar/SearchContext';
-import SearchBar from '../components/SearchBar/SearchBar'; */
-
-/* function Shop() {
-  const [cartItems, setCartItems] = useState([]);
-
-  const addToCart = (product) => {
-    setCartItems([...cartItems, product]);
-  };
-
-  const clearCart = () => {
-    setCartItems([]);
-  };
-
-  const totalItems = cartItems.length;
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
-
-  return (
-    <>
-      <h1>Titulo</h1>
-      <SearchProvider>
-        <div className="app">
-          <SearchBar />
-          <ProductList productsList={products} onAddToCart={addToCart} />
-          <Cart cart={cartItems} onClearCart={clearCart} totalItems={totalItems} totalPrice={totalPrice} />
-        </div>
-      </SearchProvider>
-    </>
-  );
-}
-
-export default Shop; */
-
 import React from 'react';
-import Cart from '../../Components/Cart/Cart.jsx';
+import './Shop.css';
+import { useCart } from '../../Components/Cart/CartContext.jsx'; // Importa el hook useCart
 
-const Shop = ({ cart }) => {
+const Shop = () => {
+  const { cart, clearCart } = useCart(); // Usa el hook useCart para acceder al carrito
+
   return (
-    <div>
+    <div className="shop-container">
       <h1>Carrito de Compras</h1>
-      <Cart cart={cart} />
-      {/* Aquí puedes agregar más elementos para mostrar información adicional del carrito si es necesario */}
+      {/* Aquí puedes mostrar los detalles del carrito, como los productos y el total */}
+      <div>
+        <h2>Productos en el carrito:</h2>
+        {cart.length > 0 ? (
+          <div>
+            {cart.map((product, index) => (
+              <div key={index} className="cart-item">
+                <img src={product.image} alt={`Product ${index}`} className="product-image" />
+                <div className="product-details">
+                  <p>{product.product_name}</p>
+                  <p>Precio: {product.price} €</p>
+                </div>
+              </div>
+            ))}
+            <p>Total Items: {cart.length}</p>
+            <button onClick={clearCart}>Vaciar Carrito</button>
+          </div>
+        ) : (
+          <p>El carrito está vacío.</p>
+        )}
+      </div>
     </div>
   );
 };

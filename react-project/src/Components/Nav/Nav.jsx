@@ -42,7 +42,7 @@ const Nav = () => {
             <Link to="/productos" >Productos</Link>
           </MenuItem>
           <MenuItem icon={<ShoppingCartRoundedIcon />}>
-            <Link to="/carrito" >Carrito</Link>
+            <Link to="/shop" >Carrito</Link>
           </MenuItem>
           <Divider/>
           <MenuItem icon={<LogoutRoundedIcon />}>

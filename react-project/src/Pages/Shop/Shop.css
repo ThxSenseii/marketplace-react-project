@@ -1,0 +1,15 @@
+.shop-container {
+    background-color: white;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .shop-title {
+    text-align: center;
+  }
+  
+  .cart-container {
+    display: flex;
+    justify-content: center;
+  }
