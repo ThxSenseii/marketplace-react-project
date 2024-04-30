@@ -44,9 +44,31 @@ button:hover {
   display: inline-block; /* Alinea los botones en la parte superior */
   margin: 0 5px; /* Ajusta el margen horizontal según sea necesario */
 }
-h1 {
-  display: inline-block;
+
+.shop-container {
+  width: 100%;
+  max-width: 800px; /* Ancho máximo según sea necesario */
+  margin: 0 auto; /* Centra horizontalmente */
+  text-align: center; /* Alinea el texto al centro */
+  padding: 20px; /* Ajusta el relleno según sea necesario */
+}
+
+.cart-title, .empty-cart-message {
   background-color: white;
-  border-radius: 4px;
+  border-radius: 2%;
   padding: 5px 10px; /* Ajusta el relleno según sea necesario */
+}
+.empty-cart-message {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+}
+.total-info {
+  background-color: white;
+  border-radius: 2pc;
+  padding: 5px 10px; /* Ajusta el relleno según sea necesario */
+  display: block; /* Asegura que los elementos estén en bloques */
+  margin-bottom: 10px; /* Espacio entre los elementos */
+  margin-top: 10px;
 }
