@@ -9,8 +9,8 @@ const initializeRelations = () => {
     Users.hasMany(Orders)
     Orders.belongsTo(Users)
     
-    OrderItems.hasMany(Orders)
-    Orders.belongsTo(OrderItems)
+    Orders.hasMany(OrderItems)
+    OrderItems.belongsTo(Orders)
 
     
     Products.belongsToMany(OrderItems, { through: 'Products_OrderItems' })

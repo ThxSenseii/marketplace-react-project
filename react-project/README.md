@@ -16,18 +16,21 @@ Dynamic Bicycle Website Development
 E-commerce (Online Bicycle Store) Development
 PLUS Prototype (1-week turnaround)
 User Profiles
-Admin (GOD): Full management and supervision.
+Admin: Full management and supervision.
 Dev: Freelance developers selected through interviews and technical tests.
 Client: Bicycle enthusiasts seeking premium digital bicycles.
 Mobile and Web Design
 Mobile Design
 [Insert Mobile Design Image Here]
+![image] ()
+
 
 # Web Design
-[Insert Web Design Image Here]
+![image] ()
 
 # Tables and Relationships
 Tables
+![image] ()
 [Insert Tables Image Here]
 
 # Relationships Between Tables
@@ -44,8 +47,24 @@ Products_OrderItems:
 Junction table linking products and order items.
 
 # Endpoints
-For detailed information on endpoints, please refer to the provided API documentation.
+| METHOD | ENDPOINT          | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                               | RETURNS               |
+|--------|-------------------|-------|------|--------------------------|-------------------------------------------|------------------------|
+| POST   | /auth/signup | -     | client | New client Signup           | first_name, last_name, email, password | { token: token }       |
+| POST   | /auth/login  | -     | - | User Login            | email, password                           | { token: token }       |
 
+### User Endpoints
+
+| METHOD | ENDPOINT         | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                     | RETURNS               |
+|--------|------------------|-------|------|--------------------------|-------------------------------------------------|------------------------|
+| GET    | /user            | YES   | admin| Get all users            | Query params                                    | [{user}]              |
+| GET    | /user/:userId    | YES   | admin| Get one user             | -                                               | {user}                |
+| GET    | /user/profile    | YES   | -    | Get own profile          | -                                               | {user}                |
+| POST   | /user            | YES   | admin| Create one user          | first_name, last_name, email, password, role | {user}        |
+| PUT    | /user/:userId    | YES   | admin| Update one user          | first_name, last_name, email, password, role | {message: "User updated!"} |
+| PUT    | /user/profile    | YES   | -    | Update user profile (client and developer only update own profile)         | first_name, last_name, email, password, role | {message: "Profile updated!"} |
+| PUT    | /user/profile/password   | YES   | -    | Reset user password (client and developer only reset own password)         | newPassword | {message: "Password updated!"} |
+| DELETE | /user/:userId    | YES   | admin | Delete one user          | -                                               | {message: "User deleted!"} |
+| DELETE | /user/profile    | YES   | -    | Delete user profile (client and developer only delete own profile)         | -                                               | {message: "Profile deleted!"} |
 # Getting Started
 To get started with Bike's Paradise, follow these steps:
 
