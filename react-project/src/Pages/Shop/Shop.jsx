@@ -3,16 +3,16 @@ import './Shop.css';
 import { useCart } from '../../Components/Cart/CartContext.jsx';
 
 const Shop = () => {
+  const { cart, clearCart, removeFromCart, addToCart } = useCart();
+  const totalPrice = cart.reduce((total, product) => total + (product.price * product.quantity), 0);
 
+  const handleIncrementQuantity = (product) => {
+    addToCart(product); // Agrega el mismo producto al carrito
+  };
+
+  // Calcular el número total de productos en el carrito sumando las cantidades
+  const totalItems = cart.reduce((total, product) => total + product.quantity, 0);
   
-
-  const { cart, clearCart, removeFromCart } = useCart();
-  const totalPrice = cart.reduce((total, product) => total + product.price, 0);
-
-  const enviarDatos = () => {
-    console.log(totalPrice)
-  }
-
   return (
     <div className="shop-container">
       <h1 className="cart-title">Carrito de Compras</h1>
@@ -23,9 +23,16 @@ const Shop = () => {
               <img src={product.image} alt={`Product ${index}`} className="product-image" />
               <div className="product-details">
                 <p>{product.product_name}</p>
+                {/* Actualiza la visualización de la cantidad */}
+                <p>Cantidad: {product.quantity}</p>
                 <p>Precio: {product.price} €</p>
                 <div className="product-actions">
-                  <button onClick={() => removeFromCart(product)}>Eliminar</button>
+                  {/* Botón para decrementar la cantidad */}
+                  <button onClick={() => removeFromCart(product)}>-</button>
+                  {/* Botón para incrementar la cantidad */}
+                  <button onClick={() => handleIncrementQuantity(product)}>+</button>
+                  {/* Botón para eliminar el producto */}
+                  <button onClick={() => removeFromCart(product, true)}>Eliminar</button>
                 </div>
               </div>
             </div>
@@ -36,8 +43,8 @@ const Shop = () => {
       </div>
       {cart.length > 0 && (
         <div>
-          <div className='total-info'><p>Total Items: {cart.length}</p></div>
-          <div className='total-info'><p>Total: {totalPrice} €</p></div>
+          <div className='total-info'><p>Productos Totales: {totalItems}</p></div> {/* Mostrar el número total de productos */}
+          <div className='total-info'><p>Precio Total: {totalPrice} €</p></div>
           <button onClick={clearCart}>Vaciar Carrito</button>
           <button onClick={enviarDatos}>Enviar Carrito</button> 
         </div>
@@ -47,3 +54,5 @@ const Shop = () => {
 };
 
 export default Shop;
+
+

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './Productos.css';
 import { ImgAll } from '../../services/auth';
-import Cart from '../../Components/Cart/Cart'; // Importa el componente Cart
-import { useCart } from '../../Components/Cart/CartContext'; // Importa el hook useCart
+import Cart from '../../Components/Cart/Cart';
+import { useCart } from '../../Components/Cart/CartContext';
 
 const Productos = () => {
-  const { cart, addToCart, clearCart } = useCart(); // Usa el hook useCart para acceder al carrito
+  const { cart, addToCart, clearCart } = useCart();
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,15 +38,14 @@ const Productos = () => {
           <div className="productos-container">
             {productos.map((producto, index) => (
               <div key={index} className="product-item">
-                <img src={producto.image} alt={`Image ${index}`} className="image" />
-                <p>{producto.product_name}</p>
-                <p>{producto.price} €</p>
+                {producto.image ? <img src={producto.image} alt={`Image ${index}`} className="image" /> : <p>Image not found</p>}
+                {producto.product_name ? <p>{producto.product_name}</p> : <p>Product name not found</p>}
+                {producto.price ? <p>{producto.price} €</p> : <p>Price not found</p>}
                 <button onClick={() => addToCart(producto)}>Añadir al carrito</button>
               </div>
             ))}
           </div>
-          {/* Mueve el componente Cart aquí para que se muestre debajo de los productos */}
-          <Cart cart={cart} onClearCart={clearCart} />
+          <Cart cart={cart} />
         </div>
       )}
     </div>

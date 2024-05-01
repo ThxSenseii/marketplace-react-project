@@ -7,7 +7,6 @@ import LogIn from '../Pages/LogIn/LogIn.jsx'
 import Productos from '../Pages/Productos/Productos.jsx'
 import User from '../Pages/User/User.jsx'
 import Shop from '../Pages/Shop/Shop.jsx'
-/* import Carrito from '../Pages/Carrito/Carrito.jsx' */
 
 
 const router = createBrowserRouter([
