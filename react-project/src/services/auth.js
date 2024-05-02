@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 
 
-const signupp = async (body) => {
+/* const signupp = async (body) => {
   try {
     console.log(body)
     const { data } = await api.post('/auth/SignUp', body)
@@ -17,38 +17,38 @@ const signupp = async (body) => {
 
 export {
   signupp
-}
+} */
 
-/* const loginn = async (body) => {
+/* const signupp = async (body) => {
+  try {
+    const { data } = await api.post('/auth/SignUp', body);
+    return { userData: data, userId: data.userId, error: null };
+  } catch (error) {
+    if (error.response && error.response.status === 409) {
+      // Usuario ya existe en la base de datos
+      return { userData: null, userId: null, error: "User already exists" };
+    } else {
+      // Otro tipo de error
+      console.error("Error during signup:", error);
+      return { userData: null, userId: null, error: "Signup error" };
+    }
+  }
+}; */
+
+const signupp = async (body) => {
   try {
 
     console.log(body)
-    const { data } = await api.post('/auth/LogIn', body)
-    console.log(data)
-    return { userData: data, userId: data.id };
+    const { data } = await api.post('/auth/SignUp', body)
+    return data
   } catch (error) {
     console.log(error)
-    return { userData: null, userId: null };
   }
 }
 
 export {
-  loginn
-} */
-
-/* const loginn = async (body) => {
-  try {
-    console.log(body);
-    const { data } = await api.post('/auth/LogIn', body);
-    console.log(data);
-    return { userData: data, userId: data.userId }; // Modificamos para obtener el ID del usuario desde la respuesta
-  } catch (error) {
-    console.log(error);
-    return { userData: null, userId: null };
-  }
+  signupp
 };
-
-export { loginn }; */
 
 const loginn = async (body) => {
   try {

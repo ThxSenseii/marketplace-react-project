@@ -14,6 +14,14 @@ const Shop = () => {
   // Calcular el número total de productos en el carrito sumando las cantidades
   const totalItems = cart.reduce((total, product) => total + product.quantity, 0);
   
+
+  const { cart, clearCart, removeFromCart } = useCart();
+  const totalPrice = cart.reduce((total, product) => total + product.price, 0);
+
+  /* const enviarDatos = () => {
+    console.log(totalPrice)
+  } */
+
   return (
     <div className="shop-container">
       <h1 className="cart-title">Carrito de Compras</h1>

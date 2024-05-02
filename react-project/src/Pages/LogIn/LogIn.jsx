@@ -15,6 +15,7 @@ import Container from '@mui/material/Container';
 import { loginn } from '../../services/auth';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import "./LogIn.css";
 
 function Copyright(props) {
   return (
@@ -39,25 +40,26 @@ function LogIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    let datalogin = await loginn({ 
-      email: data.get('email'),
-      password: data.get('password') 
-    });
+    try {
+      let datalogin = await loginn({ 
+        email: data.get('email'),
+        password: data.get('password') 
+      });
 
-    console.log("Data from login service:", datalogin);
+      console.log("Data from login service:", datalogin);
 
-    if (datalogin.response && datalogin.response.status === 404) {
-      return alert(datalogin.response.data);
+      localStorage.setItem("token", datalogin.userData.token);
+      localStorage.setItem("useremail", datalogin.userData.email);
+      localStorage.setItem("userid", datalogin.userId);
+      localStorage.setItem("address", datalogin.userData.address);
+      localStorage.setItem("mobil_phone", datalogin.userData.phone);
+      localStorage.setItem("user_name", datalogin.userData.name);
+
+      setLoggedIn(true);
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("Usuario o contraseña incorrecto");
     }
-
-    localStorage.setItem("token", datalogin.userData.token);
-    localStorage.setItem("useremail", datalogin.userData.email);
-    localStorage.setItem("userid", datalogin.userId);
-    localStorage.setItem("address", datalogin.userData.address);
-    localStorage.setItem("mobil_phone", datalogin.userData.phone);
-    localStorage.setItem("user_name", datalogin.userData.name);
-
-    setLoggedIn(true);
   };
 
   // Redirigir al usuario a la página "user" después de iniciar sesión
@@ -139,4 +141,6 @@ function LogIn() {
 }
 
 export default LogIn;
+
+
 
