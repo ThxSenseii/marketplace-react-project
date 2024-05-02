@@ -6,7 +6,7 @@ import { CartProvider } from './Components/Cart/CartContext.jsx';
 import { ProSidebarProvider } from "react-pro-sidebar";
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import Checkout from './Checkout';
+import Checkout from './Components/CheckOut/CheckOut.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   

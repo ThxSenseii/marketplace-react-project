@@ -46,7 +46,7 @@ const Shop = () => {
           <div className='total-info'><p>Productos Totales: {totalItems}</p></div> {/* Mostrar el número total de productos */}
           <div className='total-info'><p>Precio Total: {totalPrice} €</p></div>
           <button onClick={clearCart}>Vaciar Carrito</button>
-          <button onClick={enviarDatos}>Enviar Carrito</button> 
+          {/* <button onClick={enviarDatos}>Enviar Carrito</button>  */}
         </div>
       )}
     </div>
