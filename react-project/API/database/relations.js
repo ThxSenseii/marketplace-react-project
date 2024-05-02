@@ -9,15 +9,15 @@ const initializeRelations = () => {
     Users.hasMany(Orders)
     Orders.belongsTo(Users)
     
-    OrderItems.hasMany(Orders)
-    Orders.belongsTo(OrderItems)
+    /* OrderItems.hasMany(Orders)
+    Orders.belongsTo(OrderItems) */
 
-    // OrderItems.belongsToMany(Products)
-    // Products.belongsToMany(OrderItems)
+    Orders.hasMany(OrderItems)
+    OrderItems.belongsTo(Orders)
 
     
-    Products.belongsToMany(OrderItems, { through: 'Products_OrderItems' })
-    OrderItems.belongsToMany(Products, { through: 'Products_OrderItems' })
+    Products.belongsToMany(OrderItems, { through: 'Products_OrderItems', foreignKey: 'productId' })
+    OrderItems.belongsToMany(Products, { through: 'Products_OrderItems', foreignKey: 'orderId' })
     console.log('Relations added to models')
   } catch (error) {
     console.log(error)

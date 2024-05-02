@@ -1,3 +1,5 @@
+import './Home.css';
+import RandomProductImages from '../../Components/ProductsImages/RandomProductsImages';
 import React, { useEffect, useState } from 'react';
 
 
@@ -39,12 +41,12 @@ const [numran, setNumran] = useState(null);
 
 
 const getNumran = () => {
-  const numran1 = Math.floor(Math.random()*8) + 1
+  const numran1 = Math.floor(Math.random()*10) + 1
   if (numran === null) {setNumran(numran1)}
 }
-console.log(numran)
+/* console.log(numran) */
 const getProduct = async () => {
-  const product = await ImgIni(numran)
+  const product = await ImgIni()
   setProduct(product)
 }
 
@@ -68,13 +70,10 @@ useEffect(() => {
   
 
   return (
-    <div>
-      <h1>Bienvenido a nuestra tienda en línea</h1>
-      <div>
-      <img src={product.image} alt="Image" className="image" />
-   
-
-      </div>
+    <div className="home-container">
+        <h1>Bienvenido a nuestra tienda en línea</h1>
+       <p>Explora nuestra amplia selección de productos y encuentra lo que necesitas.</p>
+       <RandomProductImages/>
     </div>
   );
 };

@@ -1,11 +1,12 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, redirect } from 'react-router-dom'
 
 import Root from '../Layout/Root/index.jsx'
-// import Home from '../Pages/Home/Home'
+import Home from '../Pages/Home/Home.jsx'
 import SignUp from '../Pages/SignUp/SignUp.jsx'
 import LogIn from '../Pages/LogIn/LogIn.jsx'
-import Home from '../Pages/Home/Home.jsx'
 import Productos from '../Pages/Productos/Productos.jsx'
+import User from '../Pages/User/User.jsx'
+import Shop from '../Pages/Shop/Shop.jsx'
 
 
 const router = createBrowserRouter([
@@ -14,9 +15,9 @@ const router = createBrowserRouter([
       element: <Root />,
       children: [
         {
-          path: '/',
-           element: <Home />
-         },
+           path: '/',
+          element: <Home />
+        },
         {
             path:'/SignUp',
             element: <SignUp />
@@ -25,15 +26,22 @@ const router = createBrowserRouter([
         {
           path:'/LogIn',
           element: <LogIn />
-
+      },
+      {
+        path: '/User',
+        element: <User />
       },
       {
         path: '/Productos',
          element: <Productos />
+       },
+       {
+        path: '/Shop',
+        element: <Shop />
        }
       ]
     }
-  ])
+  ]);
 
 
 export default router

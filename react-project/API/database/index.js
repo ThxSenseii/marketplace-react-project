@@ -1,10 +1,10 @@
 const { Sequelize } = require('sequelize');
 
 
-const connection = new Sequelize('tienda', 'julio', 'reboot', {
-  host: 'localhost', // Dirección del servidor de la base de datos
+const connection = new Sequelize('defaultdb', 'avnadmin', 'AVNS_-4jzwYYJLmAP7pSXLtk', {
+  host: 'mysqlmarketplace-thxsenseii-3487.f.aivencloud.com', // Dirección del servidor de la base de datos
   dialect: 'mysql', // Especificamos que usaremos MySQL como el sistema de gestión de base de datos
-  port: 3306,       // Puerto por el que se conecta al servidor MySQL, 3306 es el predeterminado para MySQL
+  port: 22601,       // Puerto por el que se conecta al servidor MySQL, 3306 es el predeterminado para MySQL
   logging: false    // Desactivamos el logging para no mostrar los detalles de las consultas SQL en la consola
 });
 

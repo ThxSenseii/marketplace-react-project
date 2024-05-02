@@ -1,0 +1,25 @@
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Ensure the container takes full height */
+  }
+  
+  .cart {
+    border: 3px solid; 
+    padding: 20px;
+    text-align: center;
+  }
+
+  button {
+    margin-top: auto; /* Align button to bottom */
+    background-color: #3e75af;
+    color: #501111;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px; /* Add smooth border */
+  }
+
+  

@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -43,5 +44,4 @@ const startApi = async () => {
     console.log(error)
   }
 }
-
 startApi()

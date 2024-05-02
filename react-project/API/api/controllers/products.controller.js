@@ -1,23 +1,20 @@
-/* const { Sequelize } = require('sequelize');
-const express = require('express');
-const app = express() */
-/* import {connection} from '../../database/index.js'
- */
-const Products = require('../models/products.model');
+const Product = require('../models/products.model');
 
-
-const getProductImageById = async (req, res) => {
-
-    try {
-      
-        const img = await Products.findByPk(req.params.id);
+async function getAllProducts (req, res)  {
   
-    return res.status(200).send(img);
+  try {
+   
+    const products = await Product.findAll();
+
+    const imageUrls = products.map(product => product.image);
+    res.json(imageUrls);
+    
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    res.status(500).json({ message: 'Internal server error' });
   }
-  catch{
-    console.log("error")
-  }
+};
+
+module.exports = {
+  getAllProducts
 }
-
-
-module.exports = { getProductImageById }

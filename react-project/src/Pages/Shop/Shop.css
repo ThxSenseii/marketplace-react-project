@@ -1,0 +1,74 @@
+.shop-container {
+  padding: 20px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+.product-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-details {
+  padding-top: 10px;
+}
+
+button {
+  margin-top: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+.product-actions {
+  text-align: center;
+}
+.product-actions button {
+  display: inline-block; /* Alinea los botones en la parte superior */
+  margin: 0 5px; /* Ajusta el margen horizontal según sea necesario */
+}
+
+.shop-container {
+  width: 100%;
+  max-width: 800px; /* Ancho máximo según sea necesario */
+  margin: 0 auto; /* Centra horizontalmente */
+  text-align: center; /* Alinea el texto al centro */
+  padding: 20px; /* Ajusta el relleno según sea necesario */
+}
+
+.cart-title, .empty-cart-message {
+  background-color: white;
+  border-radius: 2%;
+  padding: 5px 10px; /* Ajusta el relleno según sea necesario */
+}
+.empty-cart-message {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+}
+.total-info {
+  background-color: white;
+  border-radius: 2pc;
+  padding: 5px 10px; /* Ajusta el relleno según sea necesario */
+  display: block; /* Asegura que los elementos estén en bloques */
+  margin-bottom: 10px; /* Espacio entre los elementos */
+  margin-top: 10px;
+}

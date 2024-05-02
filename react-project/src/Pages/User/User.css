@@ -1,0 +1,13 @@
+/* .user-container {
+    background-color: rgba(255, 255, 255, 0.8); 
+    position: relative; 
+    z-index: 1; 
+  } */
+  .user-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    position: absolute; /* Establece la posición absoluta */
+    top: 40%; /* Coloca el contenedor en el 50% de la parte superior */
+    left: 60%; /* Coloca el contenedor en el 50% de la izquierda */
+    transform: translate(-50%, -50%); /* Centra el contenedor */
+    padding: 20px; /* Ajusta el relleno según sea necesario */
+  }
