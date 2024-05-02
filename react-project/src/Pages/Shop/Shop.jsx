@@ -1,6 +1,7 @@
 import React from 'react';
 import './Shop.css';
 import { useCart } from '../../Components/Cart/CartContext.jsx';
+import Checkout from '../../Components/CheckOut/CheckOut.jsx';
 
 const Shop = () => {
   const { cart, clearCart, removeFromCart, addToCart } = useCart();
@@ -46,7 +47,8 @@ const Shop = () => {
           <div className='total-info'><p>Productos Totales: {totalItems}</p></div> {/* Mostrar el número total de productos */}
           <div className='total-info'><p>Precio Total: {totalPrice} €</p></div>
           <button onClick={clearCart}>Vaciar Carrito</button>
-          {/* <button onClick={enviarDatos}>Enviar Carrito</button>  */}
+          {/* <button onClick={Checkout}>Procesar Pago</button> */}
+          
         </div>
       )}
     </div>

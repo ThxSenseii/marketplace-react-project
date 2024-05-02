@@ -2,8 +2,8 @@ import React from 'react';
 import './Cart.css';
 import { useCart } from '../../Components/Cart/CartContext.jsx';
 
-function Cart({ cart, mode }) {
-  const { clearCart, removeFromCart } = useCart();
+function Cart() {
+  const { cart, clearCart, removeFromCart } = useCart();
 
   const totalPrice = cart.reduce((total, product) => total + (product.price * product.quantity), 0);
 
@@ -13,7 +13,8 @@ function Cart({ cart, mode }) {
         <h2>Carrito</h2>
         {cart.map((product, index) => (
           <div key={index} className="cart-item">
-            {mode === 'shop' && <button onClick={() => removeFromCart(product)}>Eliminar</button>}
+            <p>{product.name} - {product.quantity} x {product.price}</p>
+            <button onClick={() => removeFromCart(product)}>Eliminar</button>
           </div>
         ))}
         <p>Productos Totales: {cart.reduce((total, product) => total + product.quantity, 0)}</p>
@@ -25,6 +26,7 @@ function Cart({ cart, mode }) {
 }
 
 export default Cart;
+
 
 
 

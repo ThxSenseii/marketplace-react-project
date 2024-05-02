@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import Cart from '../Cart/Cart'
+import { useCart } from '../Cart/CartContext.jsx';
+import '../CheckOut/CheckOut.css'; 
 
 const Checkout = () => {
   const stripe = useStripe();
   const elements = useElements();
+  const { cart } = useCart();
   const [clientSecret, setClientSecret] = useState('');
   const [paymentError, setPaymentError] = useState(null);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [showModal, setShowModal] = useState(false); 
 
   useEffect(() => {
     const fetchClientSecret = async () => {
       try {
         const response = await axios.post('/api/create-payment-intent', {
-          items: [Cart],
+          items: cart,
         });
         setClientSecret(response.data.clientSecret);
       } catch (error) {
@@ -23,7 +26,7 @@ const Checkout = () => {
       }
     };
     fetchClientSecret();
-  }, []);
+  }, [cart]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,7 +48,12 @@ const Checkout = () => {
       console.log('Payment successful!');
       setPaymentError(null);
       setPaymentSuccess(true);
+      setShowModal(true); 
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false); 
   };
 
   return (
@@ -62,6 +70,14 @@ const Checkout = () => {
           Pay
         </button>
       </form>
+      {showModal && (
+        <div className="modal-container">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>&times;</span>
+            <p>Your payment was successful! Thank you for your purchase.</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
