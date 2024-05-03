@@ -21,11 +21,11 @@ Dev: Freelance developers selected through interviews and technical tests.
 Client: Bicycle enthusiasts seeking premium digital bicycles.
 
 # Web Design
-![image] (![alt text](<src/assets/web design.png>))
-
+![image](src/assets/webDesign.png)
+ 
 # Tables and Relationships
 Tables
-![image] (![alt text](src/assets/tienda.png))
+![image](src/assets/tienda.png) 
 
 
 # Relationships Between Tables
