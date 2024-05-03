@@ -19,19 +19,14 @@ User Profiles
 Admin: Full management and supervision.
 Dev: Freelance developers selected through interviews and technical tests.
 Client: Bicycle enthusiasts seeking premium digital bicycles.
-Mobile and Web Design
-Mobile Design
-[Insert Mobile Design Image Here]
-![image] ()
-
 
 # Web Design
-![image] ()
+![image] (![alt text](<src/assets/web design.png>))
 
 # Tables and Relationships
 Tables
-![image] ()
-[Insert Tables Image Here]
+![image] (![alt text](src/assets/tienda.png))
+
 
 # Relationships Between Tables
 Users:
